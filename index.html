@@ -1,0 +1,49 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>West Clermont Email Generator</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-gray-100">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-3xl">
+
+      <div class="mt-[25%] overflow-hidden rounded-lg shadow-lg bg-white shadow">
+        <div class="px-4 py-5 sm:p-6">
+
+          <h2 class="py-2 text-2xl/7 font-bold text-blue-500 sm:truncate sm:text-3xl sm:tracking-tight">West Clermont Signature Generator</h2>
+
+          <div class="-space-y-px">
+            <div class="rounded-t-md bg-white px-3 pb-1.5 pt-2.5 outline outline-1 -outline-offset-1 outline-gray-300 focus-within:relative focus-within:outline focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
+              <label for="name" class="block text-xs font-medium text-gray-900">Full Name</label>
+              <input id="name" type="text" name="name" placeholder="Jane Smith" class="block w-full text-gray-900 placeholder:text-gray-400 focus:outline focus:outline-0 sm:text-sm/6" />
+            </div>
+            <div class="rounded-b-md bg-white px-3 pb-1.5 pt-2.5 outline outline-1 -outline-offset-1 outline-gray-300 focus-within:relative focus-within:outline focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
+              <label for="job-title" class="block text-xs font-medium text-gray-900">Job Title</label>
+              <input id="job-title" type="text" name="job-title" placeholder="Head of Tomfoolery" class="block w-full text-gray-900 placeholder:text-gray-400 focus:outline focus:outline-0 sm:text-sm/6" />
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div style="display: none;">
+    <!-- Processed intructions -->
+    <h2>Email Signature</h2>
+    <p>Here's your generated signature. To use it, follow these instructions:</p>
+    <ol>
+      <li>Copy the signature between the lines below</li>
+      <li>Log in to Gmail with your Revere account on a computer</li>
+      <li>Click on the gear in the upper-right corner, and choose "See all Settings"</li>
+      <li>On the "General" tab, scroll down to the "Signature section"</li>
+      <li>Paste the generated signature into the box</li>
+      <li>Click "Save Changes" at the bottom of the screen</li>
+    </ol>
+  </div>
+  
+</body>
+</html>
