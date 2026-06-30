@@ -1,49 +1,182 @@
-<html lang="en">
+<html lang="en" data-theme="pastel">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>West Clermont Email Generator</title>
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link href="output.css" rel="stylesheet" type="text/css" />
+  <style>
+    body {
+      zoom: 1.5;
+    }
+
+    @supports not (zoom: 1.5) {
+      body {
+        transform: scale(1.5);
+        transform-origin: top left;
+        width: 66.6667%;
+      }
+    }
+  </style>
 </head>
-<body class="bg-gray-100">
+<body class="bg-base-200">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="mx-auto max-w-3xl">
+    <div class="mx-auto max-w-3xl py-12 flex">
 
-      <div class="mt-[25%] overflow-hidden rounded-lg shadow-lg bg-white shadow">
-        <div class="px-4 py-5 sm:p-6">
-
-          <h2 class="py-2 text-2xl/7 font-bold text-blue-500 sm:truncate sm:text-3xl sm:tracking-tight">West Clermont Signature Generator</h2>
-
-          <div class="-space-y-px">
-            <div class="rounded-t-md bg-white px-3 pb-1.5 pt-2.5 outline outline-1 -outline-offset-1 outline-gray-300 focus-within:relative focus-within:outline focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
-              <label for="name" class="block text-xs font-medium text-gray-900">Full Name</label>
-              <input id="name" type="text" name="name" placeholder="Jane Smith" class="block w-full text-gray-900 placeholder:text-gray-400 focus:outline focus:outline-0 sm:text-sm/6" />
+      <form id="info_form" class="w-full" onsubmit="form_submit();">
+        <fieldset class="fieldset bg-white border-base-300 shadow-xl rounded-box w-full border p-4">
+          <label class="label">Full Name</label>
+          <input required type="text" id="full_name" class="input w-full" placeholder="David Fultz" />
+        
+          <label class="label">Email Address</label>
+          <input required type="email" id="email" class="input w-full" placeholder="fultz_d@my.westcler.org" />
+  
+          <label class="label">Job Title</label>
+          <input required type="text" id="job_title" class="input w-full" placeholder="Superintendent" />
+  
+          <label class="label">Phone Number</label>
+          <input required type="tel" id="phone" class="input w-full" placeholder="(123) 456-7890" />
+  
+          <label class="label">Website</label>
+          <input required type="url" id="website" class="input w-full" value="https://www.westcler.org" />
+  
+          <label class="label">School</label>
+          <select required id="school" class="select w-full">
+            <option disabled selected>Pick a school</option>
+            <option value="District Office">District Office</option>
+            <option value="West Clermont High School">West Clermont High School</option>
+            <option value="West Clermont Middle School">West Clermont Middle School</option>
+            <option value="Willowville Elementary School">Willowville Elementary School</option>
+            <option value="Summerside Elementary School">Summerside Elementary School</option>
+            <option value="Clough Pike Elementary School">Clough Pike Elementary School</option>
+            <option value="Merwin Elementary School">Merwin Elementary School</option>
+            <option value="Amelia Elementary School">Amelia Elementary School</option>
+            <option value="Holly Hill Elementary School">Holly Hill Elementary School</option>
+            <option value="Withamsville-Tobasco Elementary School">Withamsville-Tobasco Elementary School</option>
+          </select>
+  
+          <label class="label">Select a Photo</label>
+          <div class="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
+            <div class="hidden relative" id="ae-image">
+              <label class="cursor-pointer">
+                <input type="radio" name="photo" value="images/ae.png" class="peer sr-only" />
+                <img src="images/ae.png" class="border peer-checked:border-primary peer-checked:ring peer-checked:ring-primary peer-checked:ring-offset-2 peer-checked:ring-offset-base-100" />
+              </label>
             </div>
-            <div class="rounded-b-md bg-white px-3 pb-1.5 pt-2.5 outline outline-1 -outline-offset-1 outline-gray-300 focus-within:relative focus-within:outline focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
-              <label for="job-title" class="block text-xs font-medium text-gray-900">Job Title</label>
-              <input id="job-title" type="text" name="job-title" placeholder="Head of Tomfoolery" class="block w-full text-gray-900 placeholder:text-gray-400 focus:outline focus:outline-0 sm:text-sm/6" />
+  
+            <div class="hidden relative" id="ce-image">
+              <label class="cursor-pointer">
+                <input type="radio" name="photo" value="images/ce.png" class="peer sr-only" />
+                <img src="images/ce.png" class="border peer-checked:border-primary peer-checked:ring peer-checked:ring-primary peer-checked:ring-offset-2 peer-checked:ring-offset-base-100" />
+              </label>
+            </div>
+  
+            <div class="hidden relative" id="hh-image">
+              <label class="cursor-pointer">
+                <input type="radio" name="photo" value="images/hh.png" class="peer sr-only" />
+                <img src="images/hh.png" class="border peer-checked:border-primary peer-checked:ring peer-checked:ring-primary peer-checked:ring-offset-2 peer-checked:ring-offset-base-100" />
+              </label>
+            </div>
+  
+            <div class="hidden relative" id="me-image">
+              <label class="cursor-pointer">
+                <input type="radio" name="photo" value="images/me.png" class="peer sr-only" />
+                <img src="images/me.png" class="border peer-checked:border-primary peer-checked:ring peer-checked:ring-primary peer-checked:ring-offset-2 peer-checked:ring-offset-base-100" />
+              </label>
+            </div>
+  
+            <div class="hidden relative" id="se-image">
+              <label class="cursor-pointer">
+                <input type="radio" name="photo" value="images/se.png" class="peer sr-only" />
+                <img src="images/se.png" class="border peer-checked:border-primary peer-checked:ring peer-checked:ring-primary peer-checked:ring-offset-2 peer-checked:ring-offset-base-100" />
+              </label>
+            </div>
+  
+            <div class="hidden relative" id="wt-image">
+              <label class="cursor-pointer">
+                <input type="radio" name="photo" value="images/wt.png" class="peer sr-only" />
+                <img src="images/wt.png" class="border peer-checked:border-primary peer-checked:ring peer-checked:ring-primary peer-checked:ring-offset-2 peer-checked:ring-offset-base-100" />
+              </label>
+            </div>
+  
+            <div class="hidden relative" id="wv-image">
+              <label class="cursor-pointer">
+                <input type="radio" name="photo" value="images/wv.png" class="peer sr-only" />
+                <img src="images/wv.png" class="border peer-checked:border-primary peer-checked:ring peer-checked:ring-primary peer-checked:ring-offset-2 peer-checked:ring-offset-base-100" />
+              </label>
+            </div>
+  
+            <div class="hidden relative" id="wc-image">
+              <label class="cursor-pointer">
+                <input type="radio" name="photo" value="images/chrome-web-store-banner.jpg" class="peer sr-only" />
+                <img src="images/chrome-web-store-banner.jpg" class="border peer-checked:border-primary peer-checked:ring peer-checked:ring-primary peer-checked:ring-offset-2 peer-checked:ring-offset-base-100" />
+              </label>
+            </div>
+    
+            <div class="hidden relative" id="wc-image">
+              <label class="cursor-pointer">
+                <input type="radio" name="photo" value="images/WC Emblem - Dark.png" class="peer sr-only" />
+                <img src="images/WC Emblem - Dark.png" class="border peer-checked:border-primary peer-checked:ring peer-checked:ring-primary peer-checked:ring-offset-2 peer-checked:ring-offset-base-100" />
+              </label>
+            </div>
+  
+            <div class="hidden relative" id="wc-image">
+              <label class="cursor-pointer">
+                <input type="radio" name="photo" value="images/WC Emblem - Light (1).png" class="peer sr-only" />
+                <img src="images/WC Emblem - Light (1).png" class="border peer-checked:border-primary peer-checked:ring peer-checked:ring-primary peer-checked:ring-offset-2 peer-checked:ring-offset-base-100" />
+              </label>
+            </div>
+  
+            <div class="hidden relative" id="wc-image">
+              <label class="cursor-pointer">
+                <input type="radio" name="photo" value="images/WC Fanged.jpg" class="peer sr-only" />
+                <img src="images/WC Fanged.jpg" class="border peer-checked:border-primary peer-checked:ring peer-checked:ring-primary peer-checked:ring-offset-2 peer-checked:ring-offset-base-100" />
+              </label>
+            </div>
+  
+            <div class="hidden relative" id="wc-image">
+              <label class="cursor-pointer">
+                <input type="radio" name="photo" value="images/WC Primary - Dark.png" class="peer sr-only" />
+                <img src="images/WC Primary - Dark.png" class="border peer-checked:border-primary peer-checked:ring peer-checked:ring-primary peer-checked:ring-offset-2 peer-checked:ring-offset-base-100" />
+              </label>
+            </div>
+  
+            <div class="hidden relative" id="wc-image">
+              <label class="cursor-pointer">
+                <input type="radio" name="photo" value="images/WC Primary - Light.png" class="peer sr-only" />
+                <img src="images/WC Primary - Light.png" class="border peer-checked:border-primary peer-checked:ring peer-checked:ring-primary peer-checked:ring-offset-2 peer-checked:ring-offset-base-100" />
+              </label>
+            </div>
+  
+            <div class="hidden relative" id="wc-image">
+              <label class="cursor-pointer">
+                <input type="radio" name="photo" value="images/WC Wolf Logo FINAL CMYK copy.png" class="peer sr-only" />
+                <img src="images/WC Wolf Logo FINAL CMYK copy.png" class="border peer-checked:border-primary peer-checked:ring peer-checked:ring-primary peer-checked:ring-offset-2 peer-checked:ring-offset-base-100" />
+              </label>
+            </div>
+  
+            <div class="hidden relative" id="wc-image">
+              <label class="cursor-pointer">
+                <input type="radio" name="photo" value="images/WC Wolf Logo FINAL CMYK.png" class="peer sr-only" />
+                <img src="images/WC Wolf Logo FINAL CMYK.png" class="border peer-checked:border-primary peer-checked:ring peer-checked:ring-primary peer-checked:ring-offset-2 peer-checked:ring-offset-base-100" />
+              </label>
+            </div>
+  
+            <div class="hidden relative" id="wc-image">
+              <label class="cursor-pointer">
+                <input type="radio" name="photo" value="images/WC Wolves LOGOTYPE.png" class="peer sr-only" />
+                <img src="images/WC Wolves LOGOTYPE.png" class="border peer-checked:border-primary peer-checked:ring peer-checked:ring-primary peer-checked:ring-offset-2 peer-checked:ring-offset-base-100" />
+              </label>
             </div>
           </div>
-
-        </div>
-      </div>
-
+        
+          <button class="btn btn-neutral mt-4">Generate</button>
+        </fieldset>
+      </form>
+      
     </div>
   </div>
 
-  <div style="display: none;">
-    <!-- Processed intructions -->
-    <h2>Email Signature</h2>
-    <p>Here's your generated signature. To use it, follow these instructions:</p>
-    <ol>
-      <li>Copy the signature between the lines below</li>
-      <li>Log in to Gmail with your Revere account on a computer</li>
-      <li>Click on the gear in the upper-right corner, and choose "See all Settings"</li>
-      <li>On the "General" tab, scroll down to the "Signature section"</li>
-      <li>Paste the generated signature into the box</li>
-      <li>Click "Save Changes" at the bottom of the screen</li>
-    </ol>
-  </div>
+  <script src="index.js"></script>
   
 </body>
 </html>
